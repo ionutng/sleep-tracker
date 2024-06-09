@@ -7,13 +7,13 @@ import { SleepRecord } from './sleep-record';
   providedIn: 'root'
 })
 export class SleepRecordService {
-  private apiUrl = "https://localhost:7122/api/SleepRecords";
+  private apiUrl = 'https://localhost:7122/api/SleepRecords';
 
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json'
     })
-  }
+  };
 
   constructor(private httpClient: HttpClient) { }
 
@@ -38,23 +38,23 @@ export class SleepRecordService {
       );
   }
 
-  updateSleepRecord(sleepRecord: SleepRecord): Observable<any> {
-    return this.httpClient.put(this.apiUrl, sleepRecord, this.httpOptions)
+  updateSleepRecord(sleepRecord: SleepRecord): Observable<void> {
+    return this.httpClient.put<void>(`${this.apiUrl}/${sleepRecord.id}`, sleepRecord, this.httpOptions)
       .pipe(
-        catchError(this.handleError<any>('updateSleepRecord'))
+        catchError(this.handleError<void>('updateSleepRecord'))
       );
   }
 
-  deleteRecord(id: number): Observable<SleepRecord> {
-    return this.httpClient.delete<SleepRecord>(`${this.apiUrl}/${id}`, this.httpOptions)
+  deleteRecord(id: number): Observable<void> {
+    return this.httpClient.delete<void>(`${this.apiUrl}/${id}`, this.httpOptions)
       .pipe(
-        catchError(this.handleError<SleepRecord>('deleteSleepRecord'))
+        catchError(this.handleError<void>('deleteSleepRecord'))
       );
   }
 
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
-      console.error(error);
+      console.error(`${operation} failed: ${error.message}`, error);
 
       return of(result as T);
     }
