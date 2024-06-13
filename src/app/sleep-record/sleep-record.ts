@@ -3,4 +3,5 @@ export interface SleepRecord {
     date: Date;
     fallAsleepTime: string;
     wakeUpTime: string;
+    sleepDuration?: string;
 }

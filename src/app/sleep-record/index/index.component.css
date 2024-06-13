@@ -1,0 +1,32 @@
+.container {
+    text-align: left;
+    margin-bottom: 16px;
+}
+
+th {
+    font-weight: bold;
+}
+
+td {
+    text-align: center;
+    font-style: italic;
+    font-size: 16px;
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-evenly;
+    gap: 8px;
+    margin: 8px 0;
+}
+
+h2 {
+    margin-bottom: 12px;
+}
+
+.theader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+}

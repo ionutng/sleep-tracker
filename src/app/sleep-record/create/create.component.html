@@ -1,0 +1,62 @@
+<form [formGroup]="addSleepRecordForm" (submit)="addSleepRecord()">
+    <div class="container">
+        <mat-card class="form-card">
+            <mat-card-header class="card-header">
+                <mat-card-title>
+                    <strong>Add a Sleep Record</strong>
+                </mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+                <div class="date">
+                    <mat-form-field>
+                        <mat-label>Choose a date</mat-label>
+                        <input formControlName="date" matInput [matDatepicker]="picker">
+                        <mat-hint>MM/DD/YYYY</mat-hint>
+                        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                        @if (addSleepRecordForm.get('date')?.hasError('required')) {
+                            <mat-error>Date is required.</mat-error>
+                        }
+                    </mat-form-field>
+                </div>
+                <div class="fallAsleepTime">
+                    <mat-form-field>
+                        <mat-label>Fall Asleep Time</mat-label>
+                        <input formControlName="fallAsleepTime" matInput type="time">
+                        <mat-hint>HH:mm</mat-hint>
+                        <mat-icon matSuffix>bedtime</mat-icon>
+                        @if (addSleepRecordForm.get('fallAsleepTime')?.hasError('required')) {
+                            <mat-error>Fall Asleep Time is required.</mat-error>
+                        }
+                    </mat-form-field>
+                </div>
+                <div class="wakeUpTime">
+                    <mat-form-field>
+                        <mat-label>Wake Up Time</mat-label>
+                        <input formControlName="wakeUpTime" matInput type="time">
+                        <mat-hint>HH:mm</mat-hint>
+                        <mat-icon matSuffix>alarm</mat-icon>
+                        @if (addSleepRecordForm.get('wakeUpTime')?.hasError('required')) {
+                            <mat-error>Wake Up Time is required.</mat-error>
+                        }
+                    </mat-form-field>
+                </div>
+                <mat-divider></mat-divider>
+            </mat-card-content>
+            <div class="buttons">
+                <button
+                    type="submit"
+                    mat-flat-button color="primary"
+                    [disabled]="addSleepRecordForm.invalid">
+                    Add
+                </button>
+                <button mat-fab color="warn" routerLink="/sleep-record/index">
+                    <mat-icon>home</mat-icon>
+                </button>
+            </div>
+            <mat-card-footer>
+                <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+            </mat-card-footer>
+        </mat-card>
+    </div>
+</form>

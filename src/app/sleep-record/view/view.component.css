@@ -1,0 +1,26 @@
+.card {
+    margin-top: 12px;
+    max-width: 400px;
+    font-size: 18px;
+}
+
+.card-header {
+    display: flex;
+    justify-content: center;
+}
+
+.card-content {
+    text-align: center;
+}
+
+.card-content p {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+}
+
+.button {
+    display: flex;
+    justify-content: center;
+}
